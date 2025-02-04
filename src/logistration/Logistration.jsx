@@ -104,7 +104,7 @@ const Logistration = (props) => {
             <>
               {institutionLogin && (
                 <Tabs defaultActiveKey="" id="controlled-tab" onSelect={handleInstitutionLogin}>
-                  <Tab title={tabTitle} eventKey={LOGIN_PAGE} />
+                  <Tab title="Sign in" eventKey={LOGIN_PAGE} />
                 </Tabs>
               )}
               <div id="main-content" className="main-content">
