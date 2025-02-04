@@ -13,24 +13,26 @@ const ExtraSmallLayout = () => {
 
   return (
     <span
-    <video
-    autoPlay
-    loop
-    muted
-    style={{
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      transform: 'translate(-50%, -50%)',
-      zIndex: -1,
-    }}
-  >
-    <source src={`url(${backgroundVideo})`} type="video/mp4" />
-  </video>
+      
     >
+      {/* Видео на заднем плане */}
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -1,
+        }}
+      >
+        <source src={`url(${backgroundVideo})`} type="video/mp4" />
+        Ваш браузер не поддерживает видео.
+      </video>
       <Hyperlink destination={getConfig().MARKETING_SITE_BASE_URL}>
         <Image className="company-logo" alt={getConfig().SITE_NAME} src={getConfig().LOGO_WHITE_URL} />
       </Hyperlink>
