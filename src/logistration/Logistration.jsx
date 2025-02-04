@@ -26,6 +26,8 @@ import {
 } from '../data/utils';
 import { LoginPage } from '../login';
 import { backupLoginForm } from '../login/data/actions';
+import { RegistrationPage } from '../register';
+import { backupRegistrationForm } from '../register/data/actions';
 
 const Logistration = (props) => {
   const { selectedPage, tpaProviders } = props;
@@ -38,6 +40,7 @@ const Logistration = (props) => {
   const [key, setKey] = useState('');
   const navigate = useNavigate();
   const disablePublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION === false;
+  const hideRegistrationLink = getConfig().SHOW_REGISTRATION_LINKS === false;
 
   useEffect(() => {
     const authService = getAuthService();
@@ -71,7 +74,9 @@ const Logistration = (props) => {
     props.clearThirdPartyAuthContextErrorMessage();
     if (tabKey === LOGIN_PAGE) {
       props.backupRegistrationForm();
-    } 
+    } else if (tabKey === REGISTER_PAGE) {
+      props.backupLoginForm();
+    }
     setKey(tabKey);
   };
 
@@ -79,7 +84,9 @@ const Logistration = (props) => {
     <div className="d-flex">
       <Icon src={ChevronLeft} className="left-icon" />
       <span className="ml-2">
-        {formatMessage(messages['logistration.sign.in'])}
+        {selectedPage === LOGIN_PAGE
+          ? formatMessage(messages['logistration.sign.in'])
+          : formatMessage(messages['logistration.register'])}
       </span>
     </div>
   );
@@ -113,11 +120,12 @@ const Logistration = (props) => {
               {institutionLogin
                 ? (
                   <Tabs defaultActiveKey="" id="controlled-tab" onSelect={handleInstitutionLogin}>
-                    <Tab title={tabTitle} eventKey={LOGIN_PAGE} />
+                    <Tab title={tabTitle} eventKey={selectedPage === LOGIN_PAGE ? LOGIN_PAGE : REGISTER_PAGE} />
                   </Tabs>
                 )
-                : (!isValidTpaHint() && (
-                  <Tabs defaultActiveKey={LOGIN_PAGE} id="controlled-tab" onSelect={(tabKey) => handleOnSelect(tabKey, LOGIN_PAGE)}>
+                : (!isValidTpaHint() && !hideRegistrationLink && (
+                  <Tabs defaultActiveKey={selectedPage} id="controlled-tab" onSelect={(tabKey) => handleOnSelect(tabKey, selectedPage)}>
+                    <Tab title={formatMessage(messages['logistration.register'])} eventKey={REGISTER_PAGE} />
                     <Tab title={formatMessage(messages['logistration.sign.in'])} eventKey={LOGIN_PAGE} />
                   </Tabs>
                 ))}
@@ -127,10 +135,17 @@ const Logistration = (props) => {
               <div id="main-content" className="main-content">
                 {!institutionLogin && !isValidTpaHint() && hideRegistrationLink && (
                   <h3 className="mb-4.5">
-                    {formatMessage(messages['logistration.sign.in'])}
+                    {formatMessage(messages[selectedPage === LOGIN_PAGE ? 'logistration.sign.in' : 'logistration.register'])}
                   </h3>
                 )}
-                <LoginPage institutionLogin={institutionLogin} handleInstitutionLogin={handleInstitutionLogin} />
+                {selectedPage === LOGIN_PAGE
+                  ? <LoginPage institutionLogin={institutionLogin} handleInstitutionLogin={handleInstitutionLogin} />
+                  : (
+                    <RegistrationPage
+                      institutionLogin={institutionLogin}
+                      handleInstitutionLogin={handleInstitutionLogin}
+                    />
+                  )}
               </div>
             </div>
           )}
@@ -158,7 +173,7 @@ Logistration.defaultProps = {
 };
 
 Logistration.defaultProps = {
-  selectedPage: LOGIN_PAGE,
+  selectedPage: REGISTER_PAGE,
 };
 
 const mapStateToProps = state => ({
@@ -169,6 +184,7 @@ export default connect(
   mapStateToProps,
   {
     backupLoginForm,
+    backupRegistrationForm,
     clearThirdPartyAuthContextErrorMessage,
   },
 )(Logistration);
