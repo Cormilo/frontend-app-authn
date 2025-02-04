@@ -39,7 +39,7 @@ const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
 
   return (
     <>
-      <div className="col-md-12 extra-large-screen-top-stripe" />
+      
       <div className="layout">
         <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>
           {showWelcomeBanner ? <AuthSmallLayout fullName={fullName} /> : <DefaultSmallLayout />}
