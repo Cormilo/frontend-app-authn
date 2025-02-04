@@ -198,10 +198,7 @@ const LoginFailureMessage = (props) => {
   }
 
   return (
-    <Alert id="login-failure-alert" className="mb-5" variant="danger" icon={Error}>
-      <Alert.Heading>{formatMessage(messages['login.failure.header.title'])}</Alert.Heading>
-      { errorMessage }
-    </Alert>
+    
   );
 };
 
