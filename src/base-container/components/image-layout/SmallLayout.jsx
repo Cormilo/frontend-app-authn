@@ -5,15 +5,16 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import { Hyperlink, Image } from '@openedx/paragon';
 
 import messages from './messages';
+import backgroundVideo from './background.gif'
 
 const SmallLayout = () => {
   const { formatMessage } = useIntl();
 
   return (
     <span
-      className="w-100 bg-primary-500 banner__image small-layout"
-      style={{ backgroundImage: `url(${getConfig().BANNER_IMAGE_SMALL})` }}
-    >
+          className="w-100 bg-primary-500 banner__image extra-small-layout"
+          style={{ backgroundImage: `url(${backgroundVideo})` }}
+          >
       <Hyperlink destination={getConfig().MARKETING_SITE_BASE_URL}>
         <Image className="company-logo" alt={getConfig().SITE_NAME} src={getConfig().LOGO_WHITE_URL} />
       </Hyperlink>
