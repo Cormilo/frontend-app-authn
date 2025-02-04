@@ -1,4 +1,9 @@
 .login-button-width {
     min-width: 6rem;
     background-color: #ff0000;
+
+    &:hover {
+        background-color: #ff0000;
+    }
 }
+
