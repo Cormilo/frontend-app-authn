@@ -4,7 +4,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Hyperlink, Image } from '@openedx/paragon';
 import PropTypes from 'prop-types';
-import backgroundVideo from 'background.gif'
+import backgroundVideo from './background.gif'
 
 import messages from './messages';
 

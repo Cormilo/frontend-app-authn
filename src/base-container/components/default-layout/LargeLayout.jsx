@@ -5,7 +5,7 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import { Hyperlink, Image } from '@openedx/paragon';
 import classNames from 'classnames';
 
-import backgroundVideo from 'background.gif'
+import backgroundVideo from './background.gif'
 
 import messages from './messages';
 
