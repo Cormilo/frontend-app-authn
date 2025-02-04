@@ -4,7 +4,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Hyperlink, Image } from '@openedx/paragon';
 
-import backgroundVideo from './background.mp4'
+import backgroundVideo from './background.gif'
 
 import messages from './messages';
 
@@ -13,26 +13,9 @@ const ExtraSmallLayout = () => {
 
   return (
     <span
-      
-    >
-      {/* Видео на заднем плане */}
-      <video
-        autoPlay
-        loop
-        muted
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: -1,
-        }}
+      className="w-100 bg-primary-500 banner__image extra-small-layout"
+      style={{ backgroundImage: `url(backgroundVideo})` }}
       >
-        <source src={`url(${backgroundVideo})`} type="video/mp4" />
-        Ваш браузер не поддерживает видео.
-      </video>
       <Hyperlink destination={getConfig().MARKETING_SITE_BASE_URL}>
         <Image className="company-logo" alt={getConfig().SITE_NAME} src={getConfig().LOGO_WHITE_URL} />
       </Hyperlink>
