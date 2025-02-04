@@ -3,7 +3,7 @@ import { defineMessages } from '@edx/frontend-platform/i18n';
 const messages = defineMessages({
   'login.page.title': {
     id: 'login.page.title',
-    defaultMessage: 'Login | {siteName}',
+    defaultMessage: 'Login PT EdTechLab',
     description: 'login page title',
   },
   // Login labels
