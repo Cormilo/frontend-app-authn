@@ -127,12 +127,12 @@ const LoginPage = (props) => {
     const fieldErrors = { ...errors };
 
     if (emailOrUsername === '') {
-      fieldErrors.emailOrUsername = formatMessage(messages['email.validation.message']);
+      fieldErrors.emailOrUsername = "Enter your username or email address";
     } else if (emailOrUsername.length < 2) {
       fieldErrors.emailOrUsername = formatMessage(messages['username.or.email.format.validation.less.chars.message']);
     }
     if (password === '') {
-      fieldErrors.password = formatMessage(messages['password.validation.message']);
+      fieldErrors.password = "Password criteria not met";
     }
 
     return { ...fieldErrors };
