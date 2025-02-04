@@ -202,7 +202,7 @@ const LoginPage = (props) => {
   return (
     <>
       <Helmet>
-        <title>{formatMessage(messages['login.page.title'], { siteName: getConfig().SITE_NAME })}</title>
+        <title>Sign in | PT EdTechLab</title>
       </Helmet>
       <RedirectLogistration
         success={loginResult.success}
