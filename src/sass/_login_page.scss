@@ -11,6 +11,12 @@
     }
 }
 
-.nav-item .nav-link {
-    color: black;
+.nav-item .nav-link .active {
+    background-color: #0000;
+    color: black !important;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #0000;
+    color: black !important;
 }
